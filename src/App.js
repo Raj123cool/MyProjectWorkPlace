@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Details from './component/Details/Details'
+import {Grid} from '@material-ui/core'
+import {PushToTalkButtonContainer,PushToTalkButton, ErrorPanel} from '@speechly/react-ui'
+import useStyle from './style'
+import Main from './component/Main/Main'
 
-function App() {
+const App = () => {
+  const classes = useStyle()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <Grid className={classes.grid} container spacing={0} alignItems="center" justify="center" style={{height:"100vh"}}>
+        <Grid item xs={12} sm={4}>
+          <Details title="Income" />
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Main />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Details title="Expense" />
+        </Grid>
+      </Grid>
+      <PushToTalkButtonContainer>
+        <PushToTalkButton />
+        <ErrorPanel />
+      </PushToTalkButtonContainer>
+    </React.Fragment>
+  )
 }
 
 export default App;
